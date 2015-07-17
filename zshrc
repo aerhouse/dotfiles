@@ -47,5 +47,5 @@ if [[ `uname -s` == Darwin ]]; then
   export CLICOLOR=1
   export LSCOLORS=GxfxBxxxcxbxBxxxaxaxaH
   export HOMEBREW_EDITOR=emacs
-  export PATH=/usr/local/bin:/usr/local/sbin:/usr/local/opt/perl518/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/texbin:/usr/local/opt/ruby/bin
+  export PATH=/usr/local/opt/ruby/bin:/usr/local/opt/perl/bin:/usr/local/opt/python/bin:$PATH
 fi
