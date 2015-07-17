@@ -18,18 +18,26 @@ bindkey -e
 # Check if colors are available and define. Stolen from http://aperiodic.net/phil/prompt/
 if [[ "$terminfo[colors]" -ge 8 ]]; then
   colors
+
   for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE; do
       eval PR_LIGHT_$color='%{$terminfo[bold]$fg[${(L)color}]%}'
       eval PR_$color='%{$fg[${(L)color}]%}'
       (( count = $count + 1 ))
   done
   PR_COLOR_RESET="%{$terminfo[sgr0]%}"
+
   export TERM=xterm-256color
+
+  ## Define zsh prompt
+  export PROMPT="$PR_LIGHT_CYAN%~$PR_COLOR_RESET
+%(?.$PR_GREEN%# $PR_COLOR_RESET.$PR_RED%# $PR_COLOR_RESET)"
+
+else
+
+  export PROMPT="%~
+%# "
 fi
 
-## Define zsh prompt
-export PROMPT="$PR_LIGHT_CYAN%~$PR_COLOR_RESET
-%(?.$PR_GREEN%# $PR_COLOR_RESET.$PR_RED%# $PR_COLOR_RESET)"
 
 ## Editor info
 export EDITOR=emacs
