@@ -34,6 +34,9 @@ export PROMPT="$PR_LIGHT_CYAN%~$PR_COLOR_RESET
 ## Editor info
 export EDITOR=emacs
 
+## Ease git cloning from Github
+cln() { git clone git@github.com:"$*" } 
+
 ## Linux-specific
 if [[ `uname -s` == Linux ]]; then
    alias emacs='emacs -nw'
