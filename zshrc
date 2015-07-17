@@ -37,6 +37,11 @@ export EDITOR=emacs
 ## Ease git cloning from Github
 cln() { git clone git@github.com:"$*" } 
 
+## Color man pages, among other things
+if [[ `which most` ]]; then
+	export PAGER=`which most`
+fi
+
 ## Linux-specific
 if [[ `uname -s` == Linux ]]; then
    alias emacs='emacs -nw'
@@ -50,5 +55,6 @@ if [[ `uname -s` == Darwin ]]; then
   export CLICOLOR=1
   export LSCOLORS=GxfxBxxxcxbxBxxxaxaxaH
   export HOMEBREW_EDITOR=emacs
-  export PATH=/usr/local/opt/ruby/bin:/usr/local/opt/perl/bin:/usr/local/opt/python/bin:$PATH
+  local HB=/usr/local/bin:/usr/local/sbin
+  export PATH=/usr/local/opt/perl/bin:$HB:$PATH
 fi
