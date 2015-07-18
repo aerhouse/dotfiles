@@ -62,7 +62,20 @@ fi
 if [[ `uname -s` == Darwin ]]; then
   export CLICOLOR=1
   export LSCOLORS=GxfxBxxxcxbxBxxxaxaxaH
-  export HOMEBREW_EDITOR=emacs
-  local HB=/usr/local/bin:/usr/local/sbin
-  export PATH=/usr/local/opt/perl/bin:$HB:$PATH
+
+  if [[ -x /usr/libexec/path_helper ]]; then
+  	eval `/usr/libexec/path_helper -s`
+  	
+    if [[ -x `which brew` ]]; then
+      export HOMEBREW_EDITOR=emacs
+
+      export PATH=`echo $PATH | sed 's|/usr/local/bin:||'`
+      local HB=/usr/local/bin:/usr/local/sbin
+      if [[ -x /usr/local/opt/perl/bin ]]; then 
+        local PRL=/usr/local/opt/perl/bin
+      fi
+      export PATH=$PRL:$HB:$PATH
+    fi
+  
+  fi
 fi
