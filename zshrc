@@ -46,7 +46,7 @@ export EDITOR=emacs
 cln() { git clone git@github.com:"$*" } 
 
 ## Color man pages, among other things
-if [[ `which most` ]]; then
+if [[ -x `which most` ]]; then
 	export PAGER=`which most`
 fi
 
@@ -63,19 +63,17 @@ if [[ `uname -s` == Darwin ]]; then
   export CLICOLOR=1
   export LSCOLORS=GxfxBxxxcxbxBxxxaxaxaH
 
+  # Create PATH using path_helper
   if [[ -x /usr/libexec/path_helper ]]; then
   	eval `/usr/libexec/path_helper -s`
   	
-    if [[ -x `which brew` ]]; then
+    # Check for Homebrew
+    if [[ -x `which brew` ]]; then 
       export HOMEBREW_EDITOR=emacs
-
+      # Put Homebrew directories first in PATH
       export PATH=`echo $PATH | sed 's|/usr/local/bin:||'`
       local HB=/usr/local/bin:/usr/local/sbin
-      if [[ -x /usr/local/opt/perl/bin ]]; then 
-        local PRL=/usr/local/opt/perl/bin
-      fi
-      export PATH=$PRL:$HB:$PATH
+      export PATH=$HB:$PATH
     fi
-  
   fi
 fi
