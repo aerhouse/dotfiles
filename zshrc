@@ -67,14 +67,15 @@ if [[ `uname -s` == Darwin ]]; then
   if [[ -x /usr/libexec/path_helper ]]; then
   	PATH=""
   	eval `/usr/libexec/path_helper -s`
-  	
-    # Check for Homebrew
-    if [[ -x `which brew` ]]; then 
-      export HOMEBREW_EDITOR=emacs
-      # Put Homebrew directories first in PATH
-      PATH=`echo $PATH | sed 's|/usr/local/bin:||'`
-      HB=/usr/local/bin:/usr/local/sbin
-      export PATH=$HB:$PATH
-    fi
+  fi
+  
+  # Check for Homebrew
+  if [[ -x `which brew` ]]; then 
+    export HOMEBREW_EDITOR=emacs
+    
+    # Put Homebrew directories first in PATH
+    PATH=`echo $PATH | sed 's|/usr/local/bin:||'`
+    HB=/usr/local/bin:/usr/local/sbin
+    export PATH=$HB:$PATH
   fi
 fi
