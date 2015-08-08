@@ -63,8 +63,8 @@ fi
 if [[ `uname -s` == Linux ]]; then
     if [[ -x `which keychain` ]]; then
 	local KEYCHAIN=`which keychain`
-	local FINDPRIVKEYS=`find $HOME/.ssh -name 'id_*' -not -name '*pub' -exec printf '{} ' \;`
-	`$KEYCHAIN -q --confhost $FINDPRIVKEYS`
+	local KEYS="`find $HOME/.ssh -name 'id_*' -not -name '*pub'`"
+	`$KEYCHAIN -q --confhost $KEYS`
 	source $HOME/.keychain/$HOST-sh
     fi
     alias ls='ls --color=auto'
