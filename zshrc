@@ -9,6 +9,15 @@ setopt appendhistory autocd extendedglob nomatch notify HIST_IGNORE_DUPS
 unsetopt beep
 bindkey -e
 
+# Home and Control+Left go to beginning of line
+bindkey '\e[H' beginning-of-line
+bindkey '\e[1;5D' beginning-of-line
+# End and Control+Right go to end of line
+bindkey '\e[F' end-of-line
+bindkey '\e[1;5C' end-of-line
+# Delete key deletes things
+bindkey '\e[3~' delete-char
+
 # Foreground: #f2f2f2
 # Background: #27292C
 # Cursor: #C7C7C7
