@@ -31,10 +31,10 @@ if [[ "$terminfo[colors]" -ge 8 ]]; then
   ## Define zsh prompt
   export PROMPT="$PR_LIGHT_CYAN%~$PR_COLOR_RESET
 %(?.$PR_GREEN%# $PR_COLOR_RESET.$PR_RED%# $PR_COLOR_RESET)"
-
+  
 else
-
-  export PROMPT="%~
+    
+    export PROMPT="%~
 %# "
 fi
 
@@ -47,34 +47,39 @@ cln() { git clone git@github.com:"$*" }
 
 ## Color man pages, among other things
 if [[ -x `which most` ]]; then
-	export PAGER=`which most`
+    export PAGER=`which most`
 fi
 
 ## Linux-specific
 if [[ `uname -s` == Linux ]]; then
-   eval $(ssh-agent)
-   alias ls='ls --color=auto'
-   export LS_COLORS='di=01;96:ex=92:ln=95:'
+    if [[ -x `which keychain` ]]; then
+	local KEYCHAIN=`which keychain`
+	local FINDPUBKEYS=`find $HOME/.ssh -name 'id_*' -not -name '*pub' -exec printf '{} ' \;`
+	`$KEYCHAIN -q --confhost $FINDPUBKEYS`
+	source $HOME/.keychain/$HOST-sh
+    fi
+    alias ls='ls --color=auto'
+    export LS_COLORS='di=01;96:ex=92:ln=95:'
 fi
 
 ## OS X-specific
 if [[ `uname -s` == Darwin ]]; then
-  export CLICOLOR=1
-  export LSCOLORS=GxfxBxxxcxbxBxxxaxaxaH
+    export CLICOLOR=1
+    export LSCOLORS=GxfxBxxxcxbxBxxxaxaxaH
 
-  # Create PATH using path_helper
-  if [[ -x /usr/libexec/path_helper ]]; then
+    # Create PATH using path_helper
+    if [[ -x /usr/libexec/path_helper ]]; then
   	PATH=""
   	eval `/usr/libexec/path_helper -s`
-  fi
-  
-  # Check for Homebrew
-  if [[ -x `which brew` ]]; then 
-    export HOMEBREW_EDITOR=emacs
+    fi
     
-    # Put Homebrew directories first in PATH
-    PATH=`echo $PATH | sed 's|/usr/local/bin:||'`
-    HB=/usr/local/bin:/usr/local/sbin
-    export PATH=$HB:$PATH
-  fi
+    # Check for Homebrew
+    if [[ -x `which brew` ]]; then 
+	export HOMEBREW_EDITOR=emacs
+	
+	# Put Homebrew directories first in PATH
+	PATH=`echo $PATH | sed 's|/usr/local/bin:||'`
+	HB=/usr/local/bin:/usr/local/sbin
+	export PATH=$HB:$PATH
+    fi
 fi
