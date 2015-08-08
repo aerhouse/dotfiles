@@ -52,8 +52,7 @@ fi
 
 ## Linux-specific
 if [[ `uname -s` == Linux ]]; then
-   alias emacs='emacs -nw'
-   alias sudo='sudo '
+   eval $(ssh-agent)
    alias ls='ls --color=auto'
    export LS_COLORS='di=01;96:ex=92:ln=95:'
 fi
