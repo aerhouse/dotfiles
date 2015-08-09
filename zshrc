@@ -69,6 +69,7 @@ if [[ `uname -s` == Linux ]]; then
     fi
     alias ls='ls --color=auto'
     export LS_COLORS='di=01;96:ex=92:ln=95:'
+    export PATH=$PATH:$HOME/.gem/ruby/2.2.0/bin
 fi
 
 ## OS X-specific
