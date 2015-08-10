@@ -12,9 +12,13 @@ bindkey -e
 # Home and Control+Left go to beginning of line
 bindkey '\e[H' beginning-of-line
 bindkey '\e[1;5D' beginning-of-line
+# Control+Shift+Left goes back a word
+bindkey '\e[1;6D' backward-word
 # End and Control+Right go to end of line
 bindkey '\e[F' end-of-line
 bindkey '\e[1;5C' end-of-line
+# Control+Shift+Right goes forward a word
+bindkey '\e[1;6C' forward-word
 # Delete key deletes things
 bindkey '\e[3~' delete-char
 
