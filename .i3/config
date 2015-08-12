@@ -131,7 +131,7 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 set $Locker i3lock && sleep 1
 
 #, (s) suspend, (h) hibernate,
-set $mode_system System (l) lock, (e) logout (r) reboot, (Shift+s) shutdown
+set $mode_system System (l) lock, (e) logout, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
     bindsym l exec --no-startup-id $Locker, mode "default"
     bindsym e exec --no-startup-id i3-msg exit, mode "default"

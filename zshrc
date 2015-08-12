@@ -63,10 +63,11 @@ if [[ -x `which most` ]]; then
     export PAGER=`which most`
 fi
 
+local PLATOFRM=`uname -s`
 ## Linux-specific
-if [[ `uname -s` == Linux ]]; then
-    if [[ -x `which keychain` ]]; then
-	local KEYCHAIN=`which keychain`
+if [[ $PLATFORM == Linux ]]; then
+    local KEYCHAIN=`which keychain` 
+    if [[ -x $KEYCHAIN ]]; then
 	local KEYS="`find $HOME/.ssh -name 'id_*' -not -name '*pub'`"
 	`$KEYCHAIN -q --confhost $KEYS`
 	source $HOME/.keychain/$HOST-sh
@@ -74,10 +75,8 @@ if [[ `uname -s` == Linux ]]; then
     alias ls='ls --color=auto'
     export LS_COLORS='di=01;96:ex=92:ln=95:'
     export PATH=$PATH:$HOME/.gem/ruby/2.2.0/bin
-fi
-
 ## OS X-specific
-if [[ `uname -s` == Darwin ]]; then
+elif [[ $PLATFORM == Darwin ]]; then
     export CLICOLOR=1
     export LSCOLORS=GxfxBxxxcxbxBxxxaxaxaH
 
