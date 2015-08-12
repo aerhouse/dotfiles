@@ -63,7 +63,7 @@ if [[ -x `which most` ]]; then
     export PAGER=`which most`
 fi
 
-local PLATOFRM=`uname -s`
+export PLATFORM=`uname -s`
 ## Linux-specific
 if [[ $PLATFORM == Linux ]]; then
     local KEYCHAIN=`which keychain` 
