@@ -42,12 +42,12 @@ if [[ "$terminfo[colors]" -ge 8 ]]; then
   export TERM=xterm-256color
 
   ## Define zsh prompt
-  export PROMPT="$PR_LIGHT_CYAN%~$PR_COLOR_RESET
+  export PROMPT="$PR_LIGHT_CYAN%m : %~$PR_COLOR_RESET
 %(?.$PR_GREEN%# $PR_COLOR_RESET.$PR_RED%# $PR_COLOR_RESET)"
   
 else
     
-    export PROMPT="%~
+    export PROMPT="%m : %~
 %# "
 fi
 
