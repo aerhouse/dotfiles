@@ -6,7 +6,12 @@
    t)
   (package-initialize))
 (load-theme 'zenburn t)
-(global-set-key (kbd "C-<right>") 'smart-shift-right)
-(global-set-key (kbd "C-<left>") 'smart-shift-left)
-(global-set-key (kbd "C-<up>") 'smart-shift-up)
-(global-set-key (kbd "C-<down>") 'smart-shift-down)
+
+; Magit
+(global-set-key (kbd "C-x g") 'magit-status)
+
+; Changing onscreen buffers
+(global-set-key (kbd "C-x <right>") 'windmove-right)
+(global-set-key (kbd "C-x <left>") 'windmove-left)
+(global-set-key (kbd "C-x <up>") 'windmove-up)
+(global-set-key (kbd "C-x <down>") 'windmove-down)
