@@ -1,3 +1,6 @@
+[user]
+	name = aerhouse
+	email = aerhouse@users.noreply.github.com
 [core]
 	editor = emacs
 	excludesfile = ~/.gitignore_global
