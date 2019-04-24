@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-wget -O /etc/hosts https://someonewhocares.org/hosts/hosts && echo 127.0.0.1 $HOST >> /etc/hosts
