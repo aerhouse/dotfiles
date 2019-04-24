@@ -29,10 +29,14 @@ There are two things you can do about this warning:
 
 (load-theme 'zenburn t)
 
-; Magit
+;; Rebind paragraph movement
+(global-set-key (kbd "C-p") 'backward-paragraph)
+(global-set-key (kbd "C-n") 'forward-paragraph)
+
+;; Magit
 (global-set-key (kbd "C-x g") 'magit-status)
 
-; Changing onscreen buffers
+;; Changing onscreen buffers
 (global-set-key (kbd "C-x <right>") 'windmove-right)
 (global-set-key (kbd "C-x <left>") 'windmove-left)
 (global-set-key (kbd "C-x <up>") 'windmove-up)
